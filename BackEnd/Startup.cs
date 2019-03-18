@@ -30,7 +30,7 @@ namespace BackEnd
             services.AddDbContext<BloggingContext>(options =>
                     options.UseSqlite(Configuration.GetConnectionString("BlogDB")));
             services.AddSwaggerGen(s=>s.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" }));
-
+            services.AddCors(c => c.AddDefaultPolicy(d => d.AllowAnyOrigin()));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }
@@ -54,7 +54,7 @@ namespace BackEnd
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-
+            app.UseCors();
             app.UseMvc();
         }
     }
