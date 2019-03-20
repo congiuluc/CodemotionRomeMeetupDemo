@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +34,7 @@ namespace BackEnd.Controllers
 
         // POST api/blogpost
         [HttpPost]
+        [EnableCors]
         public IActionResult Post([FromBody] BlogPost blogPost)
         {
 
@@ -43,6 +45,7 @@ namespace BackEnd.Controllers
 
         // PUT api/blogpost/5
         [HttpPut("{id}")]
+        [EnableCors]
         public IActionResult Put(int id, [FromBody] BlogPost blogPost)
         {
            
@@ -56,6 +59,7 @@ namespace BackEnd.Controllers
 
         // DELETE api/blogpost/5
         [HttpDelete("{id}")]
+        [EnableCors]
         public IActionResult Delete(int id)
         {
             BlogPost blogPost = _bloggingContext.BlogPosts.Find(id);
